@@ -9,6 +9,7 @@ def topKfreq(nums, k):
     minHeap = []
     for num, frequnecy in freq.items():
         # we passing a tuple into the min heap
+        # basically minHeap is storing the max elements in it 
         heappush(minHeap, (frequnecy, num))
         if len(minHeap) > k:
             heappop(minHeap)
@@ -16,6 +17,7 @@ def topKfreq(nums, k):
     ans = []
     while minHeap:
         # heappop(minHeap)[1] is the num
+        # the index 1 from each is popped
         ans.append(heappop(minHeap)[1])
     return ans
 
