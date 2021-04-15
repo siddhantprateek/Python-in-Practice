@@ -7,7 +7,7 @@ class TreeNode:
 class BST:
     def __init__(self):
         self.root = None
-    
+
     def isEmpty(self):
         return self.root == None
 
@@ -17,7 +17,7 @@ class BST:
         if node == None:
             node = TreeNode(value)
             return node
-    
+
         # left
         if node.value > value:
             node.left = self.insertHelper(value, node.left)
@@ -31,7 +31,7 @@ class BST:
     def displayHelper(self, node, details):
         if node == None:
             return
-        
+
         print(details, node.value)
 
         self.displayHelper(node.left, "Left child of " + str(node.value) + " : ")
@@ -46,13 +46,13 @@ class BST:
         self.populateWithSortedHelper(nums, 0, len(nums))
     def populateWithSortedHelper(self, nums, start, end):
         if start >= end:
-            return 
+            return
         mid = (start + end) // 2
         self.insert(nums[mid])
 
         self.populateWithSortedHelper(nums, start, mid)
         self.populateWithSortedHelper(nums, mid+1, end)
-    
+
     def height(self):
         return self.heightHelper(self.root)
     def heightHelper(self, node):
@@ -68,6 +68,7 @@ class BST:
     # sum of all nodes
     def sum(self):
         return self.sumHelper(self.root)
+
     def sumHelper(self, node):
         if node == None:
             return 0
@@ -81,7 +82,7 @@ class BST:
     def preOrder(self, node):
         if node == None:
             return
-        
+
         print(node.value)
         self.preOrder(node.left)
         self.preOrder(node.right)
@@ -89,7 +90,7 @@ class BST:
     def inOrder(self, node):
         if node == None:
             return
-        
+
         self.inOrder(node.left)
         print(node.value)
         self.inOrder(node.right)
@@ -97,7 +98,7 @@ class BST:
     def postOrder(self, node):
         if node == None:
             return
-        
+
         self.postOrder(node.left)
         self.postOrder(node.right)
         print(node.value)
@@ -116,10 +117,6 @@ class BST:
 
         self.removeLeavesHelp(node.left)
         self.removeLeavesHelp(node.right)
-
-        
-
-
 
 if __name__ == '__main__':
     bst = BST()

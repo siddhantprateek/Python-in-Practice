@@ -348,6 +348,9 @@ class BST():
             return 1 + self.distanceFromRootHelper(node.left, target)
         return 1 + self.distanceFromRootHelper(node.right, target)
 
+
+
+
     # find distance between node
     def distancebetween2Node(self, a, b):
         return self.distancebetween2NodeHelper(self.root, a, b)
@@ -365,6 +368,33 @@ class BST():
         if node.value >= a and node.value <= b:
             return self.distanceFromRootHelper(node, a) + self.distanceFromRootHelper(node, b)
 
+    # flatten
+    def flatten(self):
+        self.root = self.flattening(self.root)
+
+    def flattening(self, node):
+
+        if node is None:
+            return
+
+
+        if node.left is None and node.right is None:
+            return node
+
+        # we are storing right node so that we can attack it left when it subtree is flattened
+
+        temp = node.right
+        node.right = self.flattening(node.left)
+        node.left = None
+
+        prev = node
+        # while traverse it till we reach right most node and attach it to flattened left node
+        while prev.right is not None:
+            prev = prev.right
+        # we add flattened right to the node
+        prev.right = self.flatten(temp)
+
+        return node
 
     def MaxPathCounter(self, node):
         if node == None:
@@ -381,14 +411,17 @@ class BST():
 
 if __name__ == '__main__':
     bst = BST()
-    bst.populatedWithSorted([1,2,3,4,5,6])
-    bst.bfs()
-    print(bst.zigzag())
-    print(bst.rightView())
-    bst.nextNodeLevel(6)
-    print("bfs:", bst.bfsList())
-    print(bst.pathSum(9))
-    print("pathNumbersSum: ",bst.pathNumbersSum())
-    print("allPathSum: ",bst.allPathSum(6))
-    print(bst.countPath(2))
-    print("seq Sum: ",bst.checkSequence([1, 2, 5]))
+    for i in range(6):
+        bst.insert(i)
+    bst.flatten()
+    # bst.populatedWithSorted([1,2,3,4,5,6])
+    # bst.bfs()
+    # print(bst.zigzag())
+    # print(bst.rightView())
+    # bst.nextNodeLevel(6)
+    # print("bfs:", bst.bfsList())
+    # print(bst.pathSum(9))
+    # print("pathNumbersSum: ",bst.pathNumbersSum())
+    # print("allPathSum: ",bst.allPathSum(6))
+    # print(bst.countPath(2))
+    # print("seq Sum: ",bst.checkSequence([1, 2, 5]))
