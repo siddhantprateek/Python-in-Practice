@@ -13,6 +13,7 @@ class BST:
 
     def insert(self, val):
         self.root = self.insertHelper(val, self.root)
+
     def insertHelper(self, value, node):
         if node == None:
             node = TreeNode(value)

@@ -1,6 +1,6 @@
 class Node:
     def __init__(self, data):
-        self.data = data 
+        self.data = data
         self.next = None
 
 
@@ -55,6 +55,28 @@ class LinkedList:
                 return True
         return self.findStart
 
+    # get cyclenode
+    def detectCycle(self, head):
+
+        slow, fast = head, head
+
+        while slow is not None and fast.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+
+            if slow == fast:
+                break
+
+        if not fast or not fast.next:
+            return None
+        temp head
+        # when we reach the left rope of temp will reach cycle head and slow will also reach cycle head
+        # the temp and slow will travel same distance as the part of that is not in the cycle
+        while temp != slow:
+            temp = temp.next
+            slow = slow.next
+
+        return slow
 
 
     def removeLast(self):
@@ -75,7 +97,7 @@ class LinkedList:
         return removed
 
     def removeFirst(self):
-        prev = self.head 
+        prev = self.head
         self.head = prev.next
         prev.next = None
         return prev.data
@@ -117,11 +139,11 @@ class LinkedList:
             fast = fast.next.next
             slow = slow.next
         return slow.data
-    
+
     def getLength(self):
-        
+
         temp = self.head
-        nodelength = 0 
+        nodelength = 0
         while temp is not None:
             nodelength += 1
             temp = temp.next
@@ -130,12 +152,12 @@ class LinkedList:
     def insertAfter(self, data, after):
         temp = self.find(after)
         originalNext = temp.next
-        node = Node(data) 
+        node = Node(data)
         temp.next  = node
         node.next = originalNext
 
     def display(self):
-        temp = self.head 
+        temp = self.head
         while temp is not None:
             print(temp.data, end="->")
             temp = temp.next

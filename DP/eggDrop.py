@@ -46,6 +46,7 @@ def eggDropITR(eggs, floors):
 
     for i in range(eggs + 1):
         dp[i][0] = 0
+
     for flr in range(floors + 1):
         dp[1][flr] = flr
 

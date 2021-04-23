@@ -24,7 +24,7 @@ class Solution():
     def populatedWithSorted(self, nums):
         return populatedWithSortedHelper(nums, 0, len(nums))
 
-    def populatedWithSortedHelper(self, nums, start, end)
+    def populatedWithSortedHelper(self, nums, start, end):
         if start >= end:
             return
 

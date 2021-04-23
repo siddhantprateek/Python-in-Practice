@@ -1,7 +1,7 @@
 class TreeNode:
     def __init__(self, val):
         self.value = val
-        self.left = None 
+        self.left = None
         self.right = None
 
 class BST:
@@ -62,7 +62,7 @@ class BST:
 
     def balancedHelp(self, node):
         if node == None:
-            return 
+            return
 
         left = self.HeightHelper(self.root.left)
         right  = self.HeightHelper(self.root.right)
@@ -90,7 +90,7 @@ class BST:
         if node == None:
             return 0
         return node.value + self.sumHelper(node.left) + self.sumHelper(node.right)
-    
+
     def rangeSumBST(self, root,low: int, high: int) -> int:
         if not root:
             return 0
@@ -100,7 +100,7 @@ class BST:
             return self.rangeSumBST(root.left, low, high)
         return root.val + self.rangeSumBST(root.left, low, high) + self.rangeSumBST(root.right, low, high)
 
-    
+
 
 
     def traversal(self):
@@ -108,29 +108,44 @@ class BST:
         self.inOrder(self.root)
         self.postOrder(self.root)
 
+    # invert a Binary Tree
+    def invertTree(self, root):
+        if root is None:
+            return
+
+        left = self.invertTree(root.left)
+        right = self.invertTree(root.right)
+
+        # swapping
+        root.left = right
+        root.right = left
+        return root
+
+
+
     def preOrder(self, node):
         if node == None:
-            return 
+            return
 
         print(node.value)
         self.preOrder(node.left)
-        self.preOrder(node.left)
+        self.preOrder(node.right)
 
     def inOrder(self, node):
         if node == None:
-            return 
+            return
 
-    
+
         self.inOrder(node.left)
         print(node.value)
-        self.inOrder(node.left)
+        self.inOrder(node.right)
 
     def postOrder(self, node):
         if node == None:
-            return 
+            return
 
         self.postOrder(node.left)
-        self.postOrder(node.left)
+        self.postOrder(node.right)
         print(node.value)
 
     def display(self):
@@ -160,6 +175,3 @@ if __name__ == '__main__':
     print(bst.balanced())
     # print(bst.sum())
     # bst.display()
-
-
-

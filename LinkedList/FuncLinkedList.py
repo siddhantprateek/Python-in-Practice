@@ -22,14 +22,14 @@ class LinkedList:
         if self.head == None:
             self.head = node
             return
-        
-        temp = self.head 
+
+        temp = self.head
         while temp != None:
             temp = temp.next
-        temp.next = node 
+        temp.next = node
 
     def removeFirst(self):
-        prev = self.head 
+        prev = self.head
         self.head = prev.next
         prev.next = None
         return prev.val
@@ -41,49 +41,49 @@ class LinkedList:
         if self.head == None:
             return None
 
-        # if there is one single element in the list 
+        # if there is one single element in the list
         if self.head.next == None:
             removed  = self.head.data
-            self.head = None 
-            return removed 
+            self.head = None
+            return removed
 
 
         # to reach the second last element in the list
-        temp = self.head 
+        temp = self.head
         while temp.next.next != None:
             temp = temp.next
         removed = temp.next.val
         temp.next = None
         return removed
-    
+
     def find(self, target):
-        temp = self.head 
+        temp = self.head
 
         while temp != None:
             if temp.val == target:
                 return temp
-            temp = temp.next 
+            temp = temp.next
         return None
 
-    
+
     def insertAfter(self, val, after):
         temp = self.find(after) # to get the pointer to the after position
-        originalNext = temp.next 
+        originalNext = temp.next
         node = Node(val)
-        temp.next = node 
+        temp.next = node
         node.next = originalNext
 
 
     def hasCycle(self):
-        slow, fast = self.head, self.head 
+        slow, fast = self.head, self.head
 
-        while fast is not None and fast.next is not None:
+        while fast is not None and fast.next is not None and fast is not None:
             fast = fast.next.next
             slow = slow.next
 
             if slow == fast:
-                return True 
-        return False 
+                return True
+        return False
 
 
 
@@ -94,12 +94,12 @@ class LinkedList:
             slow = slow.next
 
             if slow == fast:
-                break 
+                break
 
-        temp = slow 
+        temp = slow
         length = 0
         while True:
-            temp = temp.next 
+            temp = temp.next
             length += 1
             if temp == slow:
                 break

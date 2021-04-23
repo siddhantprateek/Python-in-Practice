@@ -64,4 +64,43 @@ class BinaryTree:
             prev = prev.right
         prev.right = self.flatten(temp)
 
-        return node 
+        return node
+
+    def populatedWithSorted(self, nums):
+        self.populatedWithSortedHelper(nums, 0, len(nums))
+
+    def populatedWithSortedHelper(self, nums, start, end):
+
+        if start >= end:
+            return
+        mid = (start + end) // 2
+        self.insert(nums[mid])
+
+        self.populatedWithSortedHelper(nums, start, mid)
+        self.populatedWithSortedHelper(nums, mid + 1, end)
+
+
+
+    def getLevelsList(self):
+
+        if self.isEmpty():
+            return
+
+
+
+        queue = deque()
+        queue.append(self.root)
+
+        while queue:
+
+            ls = len(queue)
+            ans = []
+            for _ in range(ls):
+
+                popped = queue.popleft()
+                ans.append(popped.val)
+
+                if popped.left:
+                    queue.append(popped.left)
+                if popped.right:
+                    queue.append(popped.right)
