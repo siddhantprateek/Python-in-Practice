@@ -3,5 +3,5 @@
 <h4 class = "#.installation"> Installation </h4>
 
 ```
-python install pip
+python -m install pip
 ```
