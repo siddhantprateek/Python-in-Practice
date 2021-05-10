@@ -17,6 +17,8 @@ def fiboDP(n, dp):
     # mamorization
     dp[n] = fiboDP(n - 1, dp) + fiboDP(n -2, dp)
     return dp[n]
+
+
 def fiboDP2(n, dp):
     if n < 2:
         return n
@@ -31,6 +33,8 @@ def fiboDP2(n, dp):
 ans = []
 for i in range(15):
     ans.append(fiboDP(i, [None for _ in range(101)]))
+
+
 # buttom up approuch
 def fiboBU(n):
     if n < 2:

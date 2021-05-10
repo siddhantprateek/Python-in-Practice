@@ -1,9 +1,12 @@
 from collections import deque
+
+
 class TreeNode:
     def __init__(self, val):
         self.value = val
         self.left = None
         self.right = None
+
 
 class BST:
     def __init__(self):
@@ -15,9 +18,8 @@ class BST:
     def insert(self, val):
         self.root = self.insertHelper(val, self.root)
 
-
     def insertHelper(self, value, node):
-        if node == None:
+        if node is None:
             node = TreeNode(value)
             return node
 
@@ -32,8 +34,6 @@ class BST:
         for num in nums:
             self.insert(num)
 
-
-
     def populatedWithSorted(self, nums):
         self.populatedWithSortedHelper(nums, 0, len(nums))
 
@@ -46,7 +46,6 @@ class BST:
 
         self.populatedWithSortedHelper(nums, start, mid)
         self.populatedWithSortedHelper(nums, mid + 1, end)
-
 
     def Height(self):
         return self.HeightHelper(self.root)
@@ -66,14 +65,14 @@ class BST:
             return
 
         left = self.HeightHelper(self.root.left)
-        right  = self.HeightHelper(self.root.right)
+        right = self.HeightHelper(self.root.right)
 
         return abs(left - right) <= 1
 
     def search(self, value):
         return self.searchHelp(self.root, value)
 
-    def searchHelp(self, node ,value):
+    def searchHelp(self, node, value):
         if node is None:
             return node
         if node.value == value:
@@ -81,8 +80,6 @@ class BST:
         if node.value < value:
             self.searchHelp(node.right, value)
         return self.searchHelp(node.left, value)
-
-
 
     def sum(self):
         return self.sumHelper(self.root)
@@ -92,7 +89,7 @@ class BST:
             return 0
         return node.value + self.sumHelper(node.left) + self.sumHelper(node.right)
 
-    def rangeSumBST(self, root,low: int, high: int) -> int:
+    def rangeSumBST(self, root, low: int, high: int) -> int:
         if not root:
             return 0
         if root.val < low:
@@ -100,9 +97,6 @@ class BST:
         if root.val > high:
             return self.rangeSumBST(root.left, low, high)
         return root.val + self.rangeSumBST(root.left, low, high) + self.rangeSumBST(root.right, low, high)
-
-
-
 
     def traversal(self):
         self.preOrder(self.root)
@@ -121,7 +115,6 @@ class BST:
         if node == None:
             return
 
-
         self.inOrder(node.left)
         print(node.value)
         self.inOrder(node.left)
@@ -136,7 +129,6 @@ class BST:
 
     def display(self):
         self.displayHelper(self.root, "Root Node: ")
-
 
     def displayHelper(self, node, details):
         if node == None:
@@ -166,7 +158,6 @@ class BST:
                 if popped.right:
                     queue.append(popped.right)
             print()
-
 
     def zigzag(self):
         ans = []
@@ -199,10 +190,6 @@ class BST:
             leftToRight = not leftToRight
         return ans
 
-
-
-
-
     def RightView(self):
         self.rightviewHelper(self.root)
 
@@ -215,7 +202,7 @@ class BST:
         else:
             self.rightviewHelper(node.left)
 
-# anothe way last element of all level
+    # anothe way last element of all level
     def rightSideView(self):
         ans = []
 
@@ -252,20 +239,16 @@ class BST:
     #     # level is not maintained
     #     while queue:
 
+
 # make level average
 
 
-
 # bottom view
-    # def bottomView(self):
-    #     ans = {}
-    #
-    #     if self.isEmpty():
-    #         return
-
-
-
-
+# def bottomView(self):
+#     ans = {}
+#
+#     if self.isEmpty():
+#         return
 
 
 if __name__ == '__main__':

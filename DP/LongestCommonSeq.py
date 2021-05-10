@@ -1,4 +1,4 @@
-
+# Recurssive
 def longestCommon(s1: str, s2: str):
     return findLengthoflongestSeq(s1, s2, len(s1), len(s2))
 
@@ -7,9 +7,7 @@ def findLengthoflongestSeq(s1, s2, l1, l2):
     if l1 == 0 or l2 == 0:
         return 0
 
-
     if s1[l1 - 1] == s2[l2 - 1]:
-
         return findLengthoflongestSeq(s1, s2, l1 - 1, l2 - 1) + 1
 
     return max(findLengthoflongestSeq(s1, s2, l1, l2 - 1), findLengthoflongestSeq(s1, s2, l1 - 1, l2))
@@ -25,6 +23,7 @@ print(longestCommon(X, Y))
 # DP
 
 def lCSlength(s1, s2, m, n, lookup):
+
     if m == 0 or n == 0:
         return 0
 
