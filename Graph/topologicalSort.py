@@ -39,5 +39,4 @@ if __name__ == '__main__':
     g.addEdge(2, 3)
     g.addEdge(3, 1)
 
-
-    print(g.topologicalSort())
+    g.topologicalSort()
