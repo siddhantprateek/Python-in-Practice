@@ -22,7 +22,7 @@ def rodCutterDPHelper(arr, n, dp):
     return dp[n]
 
 
-def rcitr(arr, n):
+def rctr(arr, n):
     dp = [None for _ in range(n + 1)]
 
 
