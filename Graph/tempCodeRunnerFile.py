@@ -1,2 +1,0 @@
-
-        return min_index
