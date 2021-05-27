@@ -18,33 +18,33 @@ class Vertex:
         return self.connectedTo[nbr]
 
     def __str__(self):
-        return str(self.id) + 'Connected to' + str([x.id for x in self.connectedTo])
-
+        return str(self.id) + ' Connected to ' + str([x.id for x in self.connectedTo])
 
 class Graph:
-
     def __init__(self):
-        self.vertList = dict()
-        self.numVertices = 0 # vertex tracker or counter
+        self.vertList = {}
+        self.numVertices = 0
 
-    def addVertex(self, key):
-        self.numVertices += 1
+    def addVertex(self,key):
+        self.numVertices = self.numVertices + 1
         newVertex = Vertex(key)
         self.vertList[key] = newVertex
         return newVertex
 
-    def getVertex(self, n):
+    def getVertex(self,n):
         if n in self.vertList:
             return self.vertList[n]
         else:
             return None
-    # f: from vertex t: to vertex
-    def addEdge(self, f, t, cost=0):
+
+    def __contains__(self,n):
+        return n in self.vertList
+
+    def addEdge(self,f,t,cost=0):
         if f not in self.vertList:
             nv = self.addVertex(f)
         if t not in self.vertList:
             nv = self.addVertex(t)
-
         self.vertList[f].addNeighbor(self.vertList[t], cost)
 
     def getVertices(self):
@@ -53,12 +53,13 @@ class Graph:
     def __iter__(self):
         return iter(self.vertList.values())
 
-    def __contains__(self, n):
-        return n in self.vertList
 
 g = Graph()
 
 for i in range(6):
     g.addVertex(i)
-
-print(g.vertList())
+# print(g.vertList())
+g.addEdge(0,1,2)
+for vertex in g:
+    print(vertex)
+    print(vertex.getConnections())
