@@ -1,6 +1,6 @@
 
 def subseq(unproc, proc=[], index=0):
-    
+
     if len(unproc) == index:
         print(proc)
         return
@@ -13,7 +13,7 @@ def subseq(unproc, proc=[], index=0):
 
     subseq(unproc, proc, index+1)
 
-subseq("abc")
+subseq("12")
 
 # # def subseq(unproc, proc="", index=0):
 
