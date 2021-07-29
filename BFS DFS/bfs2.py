@@ -121,6 +121,10 @@ class BST():
                     queue.append(popped.right)
 
         return ans
+    # left View
+
+    # bottom View
+    # top View
 
     def nextNodeLevel(self, key):
 
@@ -157,7 +161,8 @@ class BST():
         if node.value == sum and node.left == None and node.right == None:
             return True
 
-        return self.pathSumHelper(node.left, sum - node.value) or self.pathSumHelper(node.right, sum - node.value)
+        return self.pathSumHelper(node.left, sum - node.value) or
+         self.pathSumHelper(node.right, sum - node.value)
 
 
     def PathSum(self):
